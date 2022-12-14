@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <title>2 DeEL's clignotantes</title>
+</head>
+
+<body>
+    <main>
+        <div class="container col-xl-10">
+            <div class="row align-items-center g-lg-5 py-5">
+                <div class="col-md-10 mx-auto col-lg-5">
+                    <div class="p-4 p-md-5 border rounded-3 bg-light">
+                        <div class="mb-3">
+                            Gestion de dels 
+                        </div>
+                        <div class="mb-3" id="statutDEL1">
+                        </div>
+                        <div class="mb-3">
+                            <button class="w-100 btn btn-lg btn-danger" onclick="GererDelEtEtat(1, 'allume')">Allumer Rouge</button>
+                        </div>
+                        <div class="mb-3">
+                            <button class="w-100 btn btn-lg btn-danger" onclick="GererDelEtEtat(1, 'eteint')">Éteindre Rouge</button>
+                        </div>
+                        <div class="mb-3" id="statutDEL2">
+                        </div>
+                        <div class="mb-3">
+                            <button class="w-100 btn btn-lg btn-success" onclick="GererDelEtEtat(2, 'allume')">Allumer Verte</button>
+                        </div>
+                        <div class="mb-3">
+                            <button class="w-100 btn btn-lg btn-success" onclick="GererDelEtEtat(2, 'eteint')">Éteindre Verte</button>
+                        </div>
+                        <hr class="my-4">
+                        <small class="text-muted">Site diffusé par votre ESP32.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+
+        function GererDelEtEtat(id, etat)
+        {
+            const action = {
+                "id": id,
+                "etat": etat
+            }
+
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = () => {
+
+                if (xhttp.readyState == 4) 
+                {
+                    if (xhttp.status == 200) 
+                    {
+                        document.getElementById(`statutDEL${id}`).innerHTML = xhttp.responseText;
+                    } 
+                    else
+                    {
+                        console.log("Erreur: " + xhttp.responseText);
+                    }
+                }
+
+            }
+
+            xhttp.open("PUT", `/actionneurs/${id}`, true);
+            xhttp.setRequestHeader('Content-type', 'application/json');
+            xhttp.send(JSON.stringify(action));
+        }
+    </script>
+</body>
+
+</html>
