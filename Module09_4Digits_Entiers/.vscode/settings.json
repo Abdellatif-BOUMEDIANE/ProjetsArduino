@@ -1,0 +1,50 @@
+{
+  "files.associations": {
+    "affichage4digitsproxytm1637": "cpp"
+  },
+  "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
+  "C_Cpp_Runner.cCompilerPath": "C:/Users/aboum/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+  "C_Cpp_Runner.cppCompilerPath": "g++",
+  "C_Cpp_Runner.debuggerPath": "gdb",
+  "C_Cpp_Runner.cStandard": "c11",
+  "C_Cpp_Runner.cppStandard": "c++11",
+  "C_Cpp_Runner.useMsvc": false,
+  "C_Cpp_Runner.warnings": [
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wshadow",
+    "-Wformat=2",
+    "-Wconversion",
+    "-Wnull-dereference"
+  ],
+  "C_Cpp_Runner.enableWarnings": true,
+  "C_Cpp_Runner.warningsAsError": false,
+  "C_Cpp_Runner.compilerArgs": [],
+  "C_Cpp_Runner.linkerArgs": [],
+  "C_Cpp_Runner.includePaths": [
+    "c:/Users/aboum/OneDrive/Documents/PlatformIO/Projects/Module09_4Digits_Entiers/include",
+    "c:/Users/aboum/OneDrive/Documents/PlatformIO/Projects/Module09_4Digits_Entiers/src",
+    "c:/Users/aboum/OneDrive/Documents/PlatformIO/Projects/Module09_4Digits_Entiers/.pio/libdeps/uno/TM1637",
+    "C:/Users/aboum/.platformio/packages/framework-arduino-avr/cores/arduino",
+    "C:/Users/aboum/.platformio/packages/framework-arduino-avr/variants/standard",
+    "C:/Users/aboum/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+    "C:/Users/aboum/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+    "C:/Users/aboum/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+    "C:/Users/aboum/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+    "C:/Users/aboum/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+    ""
+  ],
+  "C_Cpp_Runner.includeSearch": [
+    "*",
+    "**/*"
+  ],
+  "C_Cpp_Runner.excludeSearch": [
+    "**/build",
+    "**/build/**",
+    "**/.*",
+    "**/.*/**",
+    "**/.vscode",
+    "**/.vscode/**"
+  ]
+}

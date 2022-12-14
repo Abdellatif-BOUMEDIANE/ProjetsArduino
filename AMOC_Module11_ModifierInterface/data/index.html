@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <main>
+        <div class="container col-xl-10">
+            <div class="row align-items-center g-lg-5 py-5">
+                <div class="col-md-10 mx-auto col-lg-5">
+                    <div class="p-4 p-md-5 border rounded-3 bg-light">
+                        <div class="mb-3">
+                            Mon site fonctionne !
+                        </div>
+                        <div class="mb-3" id="statutDEL">
+
+                        </div>
+
+                        <!-- Default switch -->
+                        <div>
+                            <input type="checkbox" id="statutDELToggle" name="delEsp32" value="">
+                            <label id="labelToggle" for="statutDELToggle"></label>
+                        </div>
+                        <hr class="my-4">
+                        <small class="text-muted">Site diffusé par votre ESP32.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        function allumer() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = () => {
+                if (xhttp.readyState == 4) {
+                    if (xhttp.status == 200) {
+                        console.log(xhttp.responseText);
+                        document.getElementById("labelToggle").innerHTML = xhttp.responseText;
+                    } else {
+                        console.log("Erreur: " + xhttp.responseText);
+                    }
+                }
+            }
+            xhttp.open("GET", "allumer", true);
+            xhttp.send();
+        }
+
+        function eteindre() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = () => {
+                if (xhttp.readyState == 4) {
+                    if (xhttp.status == 200) {
+                        console.log(xhttp.responseText);
+                        document.getElementById("labelToggle").innerHTML = xhttp.responseText;
+                    } else {
+                        console.log("Erreur: " + xhttp.responseText);
+                    }
+                }
+            }
+            xhttp.open("GET", "eteindre", true);
+            xhttp.send();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var checkboxes = document.querySelectorAll('input[type=checkbox][name=delEsp32]');
+
+            for (var checkbox of checkboxes) {
+                checkbox.addEventListener('change', function (event) {
+                    if (event.target.checked) {
+                        allumer();
+                    }
+                    else {
+                        eteindre();
+                    }
+                });
+            }
+        }, false);
+    </script>
+</body>
+
+</html>

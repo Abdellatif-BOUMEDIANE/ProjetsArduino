@@ -1,0 +1,20 @@
+#include <Arduino.h>
+#include <ArduinoTrace.h>
+#include "Program.h"
+#include "LiquidCrystal_I2C.h"
+
+Program *program;
+void setup()
+{
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+
+  program = new Program();
+}
+
+void loop()
+{
+  program->loop();
+}
+
+

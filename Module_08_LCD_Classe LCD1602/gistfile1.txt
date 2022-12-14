@@ -1,0 +1,1071 @@
+#include <EEPROM.h>
+
+#include <OneButton.h>
+
+//www.elegoo.com
+//2016.12.9
+
+//We always have to include the library
+#include "LedControl.h"
+#include "OneButton.h"
+#include "EEPROM.h"
+
+OneButton button(A1,true);
+#define BUTTON 7
+
+#define LED 5
+ int i;
+ int d=20000; 
+ int p=500;
+ int w=500;
+
+LedControl lc=LedControl(12,10,11,1);
+
+
+void setup() {
+
+  button.attachDoubleClick(doubleclick);
+  button.attachClick(singleclick);
+  button.attachLongPressStop(longclick);
+ 
+  lc.shutdown(0,false);
+  
+  lc.setIntensity(0,8);
+  
+  lc.clearDisplay(0);
+  
+  pinMode(BUTTON, INPUT_PULLUP);  
+  digitalWrite(BUTTON,HIGH);  
+   pinMode(LED, OUTPUT);  
+  digitalWrite(LED,HIGH);
+  
+  if(EEPROM.read(256) != 123){   //Action si l'on n'a jamais écrit dans l'EEPROM
+    EEPROM.write(256,123);
+    i=0;
+  }
+  else{
+    EEPROM.get(0,i);   //prend la valeur i à chaque rallumage de l'arduino à l'adresse mémoire 0
+  }
+/*---------------------------------------------------------------------------*/
+if(i==0){                         // Affiche le résultat en fonction de la valeur i récupéré dans l'EEPROM
+  byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);        
+    
+}
+
+if (i == 21){
+     byte a[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+    
+    
+    
+}
+if ( i==20){
+    
+    byte a[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+    
+    
+    
+}
+if ( i == 19){
+    
+    byte a[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+    
+    
+    
+}
+if (i == 18){
+    
+    byte a[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+    
+    
+    
+}
+if (i == 17){
+    
+    byte a[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+    
+    
+   
+}
+if (i == 16){
+    
+    byte a[8]={B11111000};
+    lc.setRow(0,0,a[0]);
+    
+    
+    
+}
+if ( i == 15){
+    
+    byte a[8]={B11111100};
+    lc.setRow(0,0,a[0]);
+    
+    
+   
+}
+if ( i == 14){
+    
+    byte a[8]={B11111110};
+    lc.setRow(0,0,a[0]);
+    
+    
+    
+}
+if (i == 13){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+    lc.setRow(0,1,b[0]);
+    
+    
+    
+}
+if (i == 12){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     
+    
+    
+}
+if (i == 11){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     
+    
+    
+}
+if (i == 10){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     
+    
+   
+}
+if (i == 9){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     
+    
+    
+}
+if (i == 8){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     
+    
+   
+}
+if (i == 7){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111100};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     
+    
+    
+}
+if (i == 6){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111110};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     
+    
+    
+}
+if ( i == 5){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     
+    
+    
+}
+if (i == 4){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     
+    
+    
+}
+if (i == 3){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     
+    
+    
+}
+if (i == 2){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     
+    
+    
+}
+if (i == 1){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);     
+     
+    
+    
+}
+
+
+
+  digitalWrite(LED,HIGH);
+
+ 
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void longclick(){
+  i = 1;
+  byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     EEPROM.put(0,i);
+     return;
+}
+
+ /*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void comptage(){
+  
+
+if (digitalRead(BUTTON) == LOW && i == 20){
+     byte a[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(d);
+    i++;    
+    EEPROM.put(0,i);    // écrit la valeur i dans l'EEPROM
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i==19){
+    
+    byte a[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 18){
+    
+    byte a[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 17){
+    
+    byte a[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 16){
+    
+    byte a[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 15){
+    
+    byte a[8]={B11111000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 14){
+    
+    byte a[8]={B11111100};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 13){
+    
+    byte a[8]={B11111110};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 12){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+    lc.setRow(0,1,b[0]);
+    digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 11){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 10){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 9){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 8){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 7){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 6){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111100};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 5){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111110};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 4){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 3){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 2){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 1){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (digitalRead(BUTTON) == LOW && i == 0){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);     
+     digitalWrite(LED,LOW);
+    delay(d);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+
+
+
+  digitalWrite(LED,HIGH);
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+void doubleclick(){
+  
+
+  
+ if (i == 22){
+     byte a[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+        
+    return;
+} 
+  if ( i==21){
+    
+    byte a[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+     digitalWrite(LED,LOW);
+   delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if (i == 20){
+    
+    byte a[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if (i == 19){
+    
+    byte a[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+     digitalWrite(LED,LOW);
+  delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if ( i == 18){
+    
+    byte a[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if (i == 17){
+    
+    byte a[8]={B11111000};
+    lc.setRow(0,0,a[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if (i == 16){
+    
+    byte a[8]={B11111100};
+    lc.setRow(0,0,a[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if ( i == 15){
+    
+    byte a[8]={B11111110};
+    lc.setRow(0,0,a[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if ( i == 14){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+    lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if (i == 13){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if ( i == 12){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+   delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if (i == 11){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if ( i == 10){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+   delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if ( i == 9){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if ( i == 8){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111100};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if ( i == 7){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111110};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+   delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if ( i == 6){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+   delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if ( i == 5){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+   delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if (i == 4){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+    delay(p);
+     i--;
+     EEPROM.put(0,i);
+    return;
+}
+if ( i == 3){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+     delay(p);
+     i--;
+     EEPROM.put(0,i);
+   
+    return;
+}
+if ( i == 2){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+     delay(p);
+     i--;
+     EEPROM.put(0,i);
+    
+    return;
+}
+
+
+
+     digitalWrite(LED,HIGH);
+  
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void singleclick(){
+  if(i==0){
+  byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);        
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+
+if ( i == 20){
+     byte a[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(w);
+    i++;  
+    EEPROM.put(0,i);  
+    return;
+}
+if ( i==19){
+    
+    byte a[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if ( i == 18){
+    
+    byte a[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if ( i == 17){
+    
+    byte a[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (i == 16){
+    
+    byte a[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if ( i == 15){
+    
+    byte a[8]={B11111000};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (i == 14){
+    
+    byte a[8]={B11111100};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (i == 13){
+    
+    byte a[8]={B11111110};
+    lc.setRow(0,0,a[0]);
+    digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if ( i == 12){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+    lc.setRow(0,1,b[0]);
+    digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if ( i == 11){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if ( i == 10){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (i == 9){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (i == 8){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (i == 7){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (i == 6){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111100};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if ( i == 5){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111110};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if ( i == 4){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B00000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if (i == 3){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B10000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if ( i == 2){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11000000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if ( i == 1){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11100000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+if ( i == 0){
+    
+    byte a[8]={B11111111};
+    byte b[8]={B11111111};
+    byte c[8]={B11110000};
+    lc.setRow(0,0,a[0]);
+     lc.setRow(0,1,b[0]);
+     lc.setRow(0,2,c[0]);     
+     digitalWrite(LED,LOW);
+    delay(w);
+    i++;
+    EEPROM.put(0,i);
+    return;
+}
+
+
+
+  digitalWrite(LED,HIGH);
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+void loop() { 
+  button.tick();
+  delay(10);
+comptage();
+ 
+}
