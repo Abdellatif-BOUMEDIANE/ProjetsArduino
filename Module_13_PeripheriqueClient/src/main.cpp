@@ -1,11 +1,11 @@
 #include <Arduino.h>
 #include "Program.h"
-#include "LiquidCrystal_I2C.h"
 
-Program *program;
+Program *program = nullptr;
+
 void setup()
 {
-  // put your setup code here, to run once:
+
   Serial.begin(115200);
 
   program = new Program();
@@ -13,5 +13,5 @@ void setup()
 
 void loop()
 {
-  program->loop();
+  program->boucle();
 }

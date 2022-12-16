@@ -19,23 +19,23 @@
 
 bool erreur = false;
 
-IPAddress adresseIPPrivee(192,168,51,1);
-IPAddress passerelleParDefault(192,168,51,1);
-IPAddress masqueDeSousReseaux(255,255,255,0);
+IPAddress adresseIPPrivee(192, 168, 51, 1);
+IPAddress passerelleParDefault(192, 168, 51, 1);
+IPAddress masqueDeSousReseaux(255, 255, 255, 0);
 
 Program::Program()
 {
-     this->m_actionneurs.push_back(new DEL(1, "DEL 1", BORNE_DEL_1, false));
-     this->m_actionneurs.push_back(new DEL(2, "DEL 2", BORNE_DEL_2, false));
+  this->m_actionneurs.push_back(new DEL(1, "DEL 1", BORNE_DEL_1, false));
+  this->m_actionneurs.push_back(new DEL(2, "DEL 2", BORNE_DEL_2, false));
 }
 
 void Program::listeFileDansDossier(File dossier, int numerotab)
 {
-  while(true)
+  while (true)
   {
     File entree = dossier.openNextFile();
 
-    if(!entree)
+    if (!entree)
     {
       break;
     }
@@ -44,13 +44,13 @@ void Program::listeFileDansDossier(File dossier, int numerotab)
     {
       Serial.println('\t');
     }
-    
+
     Serial.print(entree.name());
-  
-    if(entree.isDirectory())
+
+    if (entree.isDirectory())
     {
-     Serial.println('/');
-     listeFileDansDossier(entree, numerotab + 1);
+      Serial.println('/');
+      listeFileDansDossier(entree, numerotab + 1);
     }
     else
     {
@@ -62,26 +62,26 @@ void Program::listeFileDansDossier(File dossier, int numerotab)
 
 const void Program::Configuration()
 {
-   bool estConfigurerCorectement = WiFi.softAPConfig(adresseIPPrivee, passerelleParDefault, masqueDeSousReseaux);
+  bool estConfigurerCorectement = WiFi.softAPConfig(adresseIPPrivee, passerelleParDefault, masqueDeSousReseaux);
 
   bool demarragePointAccesReussit = false;
 
   Serial.println(String("configuration réseau du point d'accès : ") + estConfigurerCorectement ? "Réussite" : "Échec");
 
-  if(estConfigurerCorectement)
+  if (estConfigurerCorectement)
   {
     demarragePointAccesReussit = WiFi.softAP(WIFI_SSID, WIFI_PASSWORD);
 
     Serial.println(String("Démarrage du point d'accès : ") + (demarragePointAccesReussit ? "Réussi" : "Échec"));
 
-    if(demarragePointAccesReussit)
+    if (demarragePointAccesReussit)
     {
       this->m_serveur = new ServeurWeb(this->m_actionneurs);
 
       Serial.println();
       Serial.println(F("Initialisation ..."));
 
-      if(SPIFFS.begin())
+      if (SPIFFS.begin())
       {
         Serial.println(F("SPIFFS est monté correctement"));
       }
@@ -94,7 +94,7 @@ const void Program::Configuration()
       unsigned int bitesUtilise = SPIFFS.usedBytes();
 
       Serial.println();
-      
+
       Serial.println("==== Information sur le système de fichier ====");
 
       Serial.println("total d'espace : " + String(totalBites) + " bites");
@@ -108,12 +108,12 @@ const void Program::Configuration()
   }
 
   erreur = !(estConfigurerCorectement && demarragePointAccesReussit);
-  
 }
-
 
 const void Program::loop()
 {
-   this->m_serveur->tick();
+  if (!erreur)
+  {
+    this->m_serveur->tick();
+  }
 }
-

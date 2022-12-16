@@ -1,14 +1,19 @@
 #pragma once
+#include <Arduino.h>
+#include "WebClient.h"
+#include "Bouton.h"
 
-class ServeurWeb;
-class Program {
- public:
+class Program
+{
+private:
+  WebClient *m_webClient;
+
+  Bouton *m_bouton;
+
+public:
   Program();
-  void connexionReseau();
-  void loop();
-  
 
- private:
-   ServeurWeb* m_serveurWeb;
+  void boucle();
 
+  void connectionReseau();
 };
